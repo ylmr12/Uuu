@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti, Luz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            color: #333;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/heart.png');
+            background-repeat: repeat;
+        }
+        h1 {
+            color: #ff69b4;
+            margin-top: 50px;
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px;
+        }
+        .propuesta {
+            background-color: #ff69b4;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.5em;
+            margin-top: 30px;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .botones {
+            margin-top: 30px;
+        }
+        button {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .si {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .no {
+            background-color: #f44336;
+            color: white;
+        }
+        .si.grande {
+            transform: scale(3);
+        }
+        .si.maximo {
+            transform: scale(10);
+            width: 100vw;
+            height: 100vh;
+        }
+        .heart {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 3em;
+            color: blue;
+            animation: move-heart 5s infinite;
+        }
+        .heart-plomo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3em;
+            color: #888;
+            animation: move-heart-plomo 5s infinite;
+        }
+        @keyframes move-heart {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 50px); }
+            100% { transform: translate(0, 0); }
+        }
+        @keyframes move-heart-plomo {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(-50px, -50px); }
+            100% { transform: translate(0, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Luz, mi Amor,</h1>
+    <p>Desde el momento en que te conocí, supe que algo maravilloso estaba por comenzar.</p>
+    <p>Hoy quiero pedirte algo que cambiará nuestras vidas para siempre...</p>
+
+    <div class="propuesta">
+        <p>¿Quieres ser mi San Valentín?</p>
+    </div>
+
+    <p>Te amo con todo mi corazón y quiero que vivamos una vida llena de momentos especiales. Con amor, Yilmar.</p>
+
+    <div class="botones">
+        <button class="si" id="botonSi" onclick="aceptar()">Sí</button>
+        <button class="no" id="botonNo" onclick="rechazar()">No</button>
+    </div>
+
+    <div class="heart">❤️</div>
+    <div class="heart-plomo">💖</div>
+
+    <script>
+        let tamañoBoton = 1;
+        let vecesNo = 0; // Contador de cuántas veces se presiona el botón "No"
+
+        function rechazar() {
+            if (vecesNo < 3) {
+                tamañoBoton += 0.5; // Aumentar el tamaño cada vez que se presiona "No"
+                document.getElementById("botonSi").style.transform = `scale(${tamañoBoton})`;
+
+                // Hacer que el botón de "Sí" ocupe toda la pantalla cuando llega a un cierto tamaño
+                if (tamañoBoton >= 3) {
+                    document.getElementById("botonSi").classList.add("maximo");
+                }
+
+                vecesNo++; // Aumentar el contador de veces que se ha presionado "No"
+            }
+
+            // Si el botón "No" se ha presionado 3 veces, deshabilitarlo
+            if (vecesNo >= 3) {
+                document.getElementById("botonNo").disabled = true;
+            }
+        }
+
+        function aceptar() {
+            alert('Te amo mucho, prometo jamás fallarte y hacerte muy feliz en este San Valentín y toda la vida');
+        }
+    </script>
+
+</body>
+</html>
